@@ -11,6 +11,7 @@ const Nav = () => {
   useEffect(() => {
     const setproviders = async () => {
       const providers = await getProviders();
+      console.log(providers);
       setProviders(providers);
     };
     setproviders();
@@ -71,7 +72,7 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex">
             <Image
-              src="/assets/images/logo.svg"
+              src={session?.user.image}
               alt="logo"
               width={30}
               height={30}

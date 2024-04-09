@@ -1,22 +1,28 @@
 import mongoose from "mongoose";
+import { unstable_noStore } from "next/cache";
 
-let isConnected = false;
+let isConnected = false; // track the connection
 
 export const connectToDb = async () => {
+  unstable_noStore();
   mongoose.set("strictQuery", true);
+
   if (isConnected) {
-    console.log("database connection established already");
+    console.log("MongoDB is already connected");
     return;
   }
+
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: "prompt_share",
+      dbName: "share_prompt",
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+
     isConnected = true;
-    console.log("database connection established");
+
+    console.log("MongoDB connected");
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };

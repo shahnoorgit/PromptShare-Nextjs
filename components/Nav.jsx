@@ -5,15 +5,15 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 const Nav = () => {
-  const isUser = true;
+  const { data: session } = useSession();
   const [toggle, settoggle] = useState(false);
   const [Providers, setProviders] = useState(null);
   useEffect(() => {
-    const setProviders = async () => {
+    const setproviders = async () => {
       const providers = await getProviders();
       setProviders(providers);
     };
-    setProviders();
+    setproviders();
   }, []);
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -29,7 +29,7 @@ const Nav = () => {
       </Link>
       {/*deckstop navigationbar*/}
       <div className="sm:flex hidden">
-        {isUser ? (
+        {session?.user ? (
           <div className=" flex gap-3 md:gap-5">
             <Link href="/create-post" className="black_btn">
               Create Post
@@ -42,7 +42,12 @@ const Nav = () => {
               Sign-out
             </button>
             <Link href="/profile">
-              <Image src="/assets/images/logo.svg" width={37} height={37} />
+              <Image
+                src={session?.user.image}
+                width={37}
+                height={37}
+                className=" rounded-full"
+              />
             </Link>
           </div>
         ) : (
@@ -63,7 +68,7 @@ const Nav = () => {
       </div>
       {/*mobile menu*/}
       <div className=" sm:hidden flex relative">
-        {isUser ? (
+        {session?.user ? (
           <div className="flex">
             <Image
               src="/assets/images/logo.svg"
@@ -96,7 +101,9 @@ const Nav = () => {
                     settoggle(false);
                   }}
                   className=" mt-5 w-full black_btn"
-                ></button>
+                >
+                  Sign-out
+                </button>
               </div>
             )}
           </div>

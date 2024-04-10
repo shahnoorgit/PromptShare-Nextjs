@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Form = ({ type, post, setPost, submiting, handleSubmit }) => {
@@ -41,6 +42,11 @@ const Form = ({ type, post, setPost, submiting, handleSubmit }) => {
             className="form_input"
           />
         </label>
+        <div className="flex-end mx-3 mb-5 gap-4">
+          <Link href="/" className=" text-gray-500 text-sm">
+            Cancel
+          </Link>
+        </div>
       </form>
     </section>
   );

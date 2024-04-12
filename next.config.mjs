@@ -1,10 +1,6 @@
 // next.config.js
 
 const nextConfig = {
-  experimental: {
-    appDir: true,
-    serverComponentsExternalPackages: ["mongoose"],
-  },
   images: {
     domains: ["lh3.googleusercontent.com"],
   },
@@ -15,6 +11,10 @@ const nextConfig = {
     };
     return config;
   },
+  experimental: {
+    prerender: true, // Enable prerendering
+  },
+  // Specify the output format for the prerender manifest
 };
 
 export default nextConfig;

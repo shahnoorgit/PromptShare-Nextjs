@@ -10,7 +10,7 @@ const MyProfile = () => {
   const router = useRouter();
   const handleEdit = (post) => {
     console.log("hiii", post);
-    router.push(`/update-prompt?id=${post._id}`);
+    router.push(`/update-prompt/${post._id}`);
   };
   const handleDelete = async (post) => {
     const isConfirmed = confirm("Are you sure you want to delete this post?");

@@ -2,6 +2,10 @@
   "name": "promptio",
   "version": "0.1.0",
   "private": true,
+  "next": {
+    "target": "serverless"
+  },
+  
   "scripts": {
     "dev": "next dev",
     "build": "next build",

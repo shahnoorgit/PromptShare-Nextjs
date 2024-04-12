@@ -1,15 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Form from "@components/Form";
 
 const EditPage = () => {
   const router = useRouter();
   const [submiting, setSubmiting] = useState(false);
-  const searchParams = (
-    <Suspense fallback={<div>Loading...</div>}>{useSearchParams()}</Suspense>
-  );
-  const promptId = searchParams.get("id");
+  const { id: promptId } = useParams();
   const [post, setpost] = useState({
     prompt: "",
     tag: "",

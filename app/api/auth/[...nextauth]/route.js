@@ -5,6 +5,7 @@ import GoogleProvider from "next-auth/providers/google";
 
 console.log(process.env.GOOGLE_CLIENT_ID);
 const handler = NextAuth({
+  secret: 'eyfVz27/fTmO/BQZUFK+JuOtcD7Lqwp8dQCGB3k1DYE=',
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,

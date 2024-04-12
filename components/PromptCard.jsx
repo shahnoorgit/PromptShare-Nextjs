@@ -17,10 +17,16 @@ const PromptCard = ({ handleTagClick, post, handleEdit, handleDelete }) => {
       setCopied("");
     }, 3000);
   };
+  const handleUserProfile = (post) => {
+    router.push(`/user-profile/${post.creator._id}`);
+  };
   return (
     <div className="prompt_card">
       <div className=" flex justify-between items-start gap-5">
-        <div className="flex-1 cursor-pointer flex justify-start items-center gap-5">
+        <div
+          onClick={() => handleUserProfile(post)}
+          className="flex-1 cursor-pointer flex justify-start items-center gap-5"
+        >
           <Image
             src={post?.creator.image}
             alt="author pic"
@@ -52,26 +58,27 @@ const PromptCard = ({ handleTagClick, post, handleEdit, handleDelete }) => {
       <p className=" py-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
       <p
         className=" font-inter text-sm blue_gradient cursor-pointer"
-        onClick={handleTagClick && handleTagClick(post.tag)}
+        onClick={() => handleTagClick(post.tag)}
       >
         {post.tag}
       </p>
-      {session?.user.id === post?.creator._id && pathname === "/profile" && (
-        <div className=" mt-5 flex-center gap-4 border-t border-gray-300 pt-3">
-          <p
-            className=" font-inter text-sm green_gradient cursor-pointer"
-            onClick={handleEdit}
-          >
-            Edit
-          </p>
-          <p
-            className=" font-inter text-sm orange_gradient cursor-pointer"
-            onClick={handleDelete}
-          >
-            Delete
-          </p>
-        </div>
-      )}
+      {(session?.user.id === post?.creator._id && pathname === "/profile") ||
+        (pathname === `/user-profile/${session?.user.id}` && (
+          <div className=" mt-5 flex-center gap-4 border-t border-gray-300 pt-3">
+            <p
+              className=" font-inter text-sm green_gradient cursor-pointer"
+              onClick={handleEdit}
+            >
+              Edit
+            </p>
+            <p
+              className=" font-inter text-sm orange_gradient cursor-pointer"
+              onClick={handleDelete}
+            >
+              Delete
+            </p>
+          </div>
+        ))}
     </div>
   );
 };

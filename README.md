@@ -1,6 +1,6 @@
 ![Project Screenshot](project1.png)
 
-<details>
+
 <div align="center">
 
   <div>
@@ -49,7 +49,4 @@
 
 👉 **Responsive Website**: Develop a fully responsive website to ensure optimal user experience across various devices, from desktops to smartphones
 
-
-
-</details>
 

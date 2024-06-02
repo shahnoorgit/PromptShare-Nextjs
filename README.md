@@ -1,3 +1,4 @@
+![Project Screenshot](project1.png)
 <div align="center">
 
   <div>
@@ -8,7 +9,6 @@
 
   <h3 align="center">Next.js 14 AI Prompt Sharing Application</h3
 </div>
-![project screenshot](project.png)
 ## 📋 <a name="table">Table of Contents</a>
 
 1. 🤖 [Introduction](#introduction)
